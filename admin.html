@@ -1,0 +1,1718 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAMAG Luxury Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
+
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --color-primary: #606060;
+      --color-secondary: #000000;
+      --color-accent: #000000;
+      --color-dark: #1a1a1a;
+      --color-light: #000000;
+    }
+    
+    body {
+      font-family: "Acme", sans-serif;
+      background: linear-gradient(135deg, #f8f5f1 0%, #ede6dd 50%, #e8dfd4 100%);
+      color: var(--color-dark);
+      overflow-x: hidden;
+    }
+    
+    .font-serif {
+      font-family: "Acme", sans-serif !important;
+      font-weight: 500 !important;
+    }
+
+    .font-mamag {
+      font-family: "Lobster Two", sans-serif;
+    }
+    
+    /* Premium Glass Card */
+    .luxury-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+      backdrop-filter: blur(30px) saturate(180%);
+      border: 1px solid rgba(157, 123, 111, 0.15);
+      box-shadow: 
+        0 8px 32px rgba(157, 123, 111, 0.08),
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      padding: 15px !important;
+    }
+    
+    .luxury-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .luxury-card:hover::before {
+      left: 100%;
+    }
+    
+    .luxury-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 20px 60px rgba(157, 123, 111, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      border-color: rgba(157, 123, 111, 0.3);
+    }
+    
+    /* Animated Gradient Background */
+    .animated-bg {
+      background: #fff;
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Premium Button */
+    .luxury-btn {
+      background: linear-gradient(135deg, #9d7b6f 0%, #b8956a 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 
+        0 4px 20px rgba(157, 123, 111, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .luxury-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .luxury-btn:hover::before {
+      left: 100%;
+    }
+    
+    .luxury-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 
+        0 8px 30px rgba(157, 123, 111, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .luxury-btn:active {
+      transform: translateY(-1px) scale(1.01);
+    }
+    
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Stagger Fade In */
+    @keyframes staggerFadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .stagger-item {
+      animation: staggerFadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      opacity: 0;
+    }
+    
+    .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+    .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+    .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+    .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+    .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+    .stagger-item:nth-child(6) { animation-delay: 0.6s; }
+    
+    /* Chart Bar Animation */
+    @keyframes barGrow {
+      from { 
+        width: 0;
+        opacity: 0;
+      }
+      to { 
+        opacity: 1;
+      }
+    }
+    
+    .chart-bar {
+      animation: barGrow 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      position: relative;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      box-shadow: 0 2px 12px rgba(157, 123, 111, 0.3);
+    }
+    
+    .chart-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0%, 100% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+    }
+    
+    /* Tab Styles */
+    .luxury-tab {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(157, 123, 111, 0.1);
+    }
+    
+    .luxury-tab-active {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(157, 123, 111, 0.3);
+    }
+    
+    /* Modal Animation */
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    .modal-content {
+      animation: modalSlideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    
+    /* Progress Bar */
+    .progress-container {
+      background: rgba(157, 123, 111, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .progress-bar {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+      background-size: 200% 100%;
+      box-shadow: 0 0 20px rgba(157, 123, 111, 0.5);
+      transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    /* Upload Area */
+    .upload-zone {
+      border: 3px dashed rgba(157, 123, 111, 0.3);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      background: rgba(255, 255, 255, 0.5);
+      position: relative;
+    }
+    
+    .upload-zone::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(157, 123, 111, 0.05), rgba(184, 149, 106, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .upload-zone:hover {
+      border-color: var(--color-primary);
+      transform: scale(1.02);
+      background: white;
+      box-shadow: 0 8px 30px rgba(157, 123, 111, 0.15);
+    }
+    
+    .upload-zone:hover::before {
+      opacity: 1;
+    }
+    
+    /* Product Card */
+    .product-card {
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+      background: white;
+      border: 1px solid rgba(157, 123, 111, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(157, 123, 111, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .product-card:hover::before {
+      opacity: 1;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 20px 50px rgba(157, 123, 111, 0.25);
+      border-color: var(--color-primary);
+    }
+    
+    .product-image {
+      background: linear-gradient(135deg, #f8f5f1, #ede6dd);
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      object-fit: cover;
+    }
+    
+    .product-card:hover .product-image {
+      transform: scale(1.1);
+    }
+    
+    .product-inactive {
+      opacity: 0.6;
+      filter: grayscale(50%);
+    }
+    
+    .inactive-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      font-size: 0.875rem;
+      z-index: 10;
+    }
+    
+    /* Order Item */
+    .order-item {
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      border-left: 3px solid transparent;
+    }
+    
+    .order-item:hover {
+      background: rgba(157, 123, 111, 0.05);
+      border-left-color: var(--color-primary);
+      transform: translateX(4px);
+    }
+    
+    /* Badge Pulse */
+    @keyframes pulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(157, 123, 111, 0.7);
+      }
+      50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(157, 123, 111, 0);
+      }
+    }
+    
+    .pulse-badge {
+      animation: pulse 2s infinite;
+    }
+    
+    /* Input Focus */
+    .luxury-input {
+      border: 2px solid rgba(157, 123, 111, 0.2);
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .luxury-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(157, 123, 111, 0.1);
+      background: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Size Button */
+    .size-btn {
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      border: 2px solid rgba(157, 123, 111, 0.2);
+      background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .size-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(157, 123, 111, 0.2);
+    }
+    
+    .size-btn-active {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 16px rgba(157, 123, 111, 0.3);
+    }
+    
+    /* Table */
+    .luxury-table {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+    }
+    
+    .luxury-table thead {
+      background: linear-gradient(135deg, rgba(157, 123, 111, 0.1), rgba(184, 149, 106, 0.1));
+    }
+    
+    .luxury-table tbody tr {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(157, 123, 111, 0.1);
+    }
+    
+    .luxury-table tbody tr:hover {
+      background: rgba(157, 123, 111, 0.05);
+      transform: scale(1.01);
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(157, 123, 111, 0.1);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+    }
+    
+    /* Toast Notification */
+    .toast {
+      animation: toastSlideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      color: white;
+      box-shadow: 0 8px 30px rgba(157, 123, 111, 0.4);
+    }
+    
+    @keyframes toastSlideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* SVG Icons */
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: currentColor;
+    }
+    
+    .icon-lg {
+      width: 2rem;
+      height: 2rem;
+    }
+    
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .luxury-card:hover {
+        transform: translateY(-4px) scale(1.01);
+      }
+      
+      .product-card:hover {
+        transform: translateY(-6px) scale(1.02);
+      }
+    }
+    
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+  <!-- <style>@view-transition { navigation: auto; }</style> -->
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full animated-bg">
+  <div id="app" class="h-full w-full"></div>
+  <script>
+    const defaultConfig = {
+      brand_name: "MAMAG",
+      dashboard_title: "Luxury Fashion Dashboard",
+      overview_label: "Overview",
+      products_label: "Products",
+      orders_label: "Orders",
+      primary_color: "#9d7b6f",
+      secondary_color: "#f8f5f1",
+      accent_color: "#b8956a",
+      text_color: "#1a1a1a",
+      background_color: "#f8f5f1"
+    };
+
+    let state = {
+      currentPage: 'overview',
+      analytics: {
+        period: 'week',
+        data: generateAnalyticsData('week')
+      },
+      products: [],
+      uploadStep: 1,
+      uploadDestination: '',
+      uploadFiles: [],
+      productInfo: {
+        name: '',
+        price: '',
+        sizes: []
+      },
+      orders: generateOrders(),
+      orderFilter: 'day',
+      showModal: false,
+      selectedProduct: null,
+      editingProduct: null,
+      loading: false
+    };
+
+    // SVG Icons
+    const icons = {
+      chart: '<svg class="icon" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>',
+      shopping: '<svg class="icon" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>',
+      package: '<svg class="icon" viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>',
+      money: '<svg class="icon" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>',
+      trending: '<svg class="icon" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>',
+      notification: '<svg class="icon" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>',
+      location: '<svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',
+      newItem: '<svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>',
+      stock: '<svg class="icon" viewBox="0 0 24 24"><path d="M20 2H4c-1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z"/></svg>',
+      image: '<svg class="icon" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>',
+      edit: '<svg class="icon" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>',
+      delete: '<svg class="icon" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>',
+      eye: '<svg class="icon" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>',
+      check: '<svg class="icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
+      close: '<svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>',
+      refresh: '<svg class="icon" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>',
+      toggle: '<svg class="icon" viewBox="0 0 24 24"><path d="M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>',
+      sparkle: '<svg class="icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'
+    };
+
+    function generateAnalyticsData(period) {
+      const labels = period === 'week' 
+        ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        : period === 'month'
+        ? ['Week 1', 'Week 2', 'Week 3', 'Week 4']
+        : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      
+      return labels.map((label, i) => ({
+        label,
+        orders: Math.floor(Math.random() * 80) + 20,
+        revenue: Math.floor(Math.random() * 8000) + 2000
+      }));
+    }
+
+    function generateOrders() {
+      const orders = [];
+      const products = [
+        'Silk Evening Gown', 
+        'Cashmere Coat', 
+        'Leather Handbag', 
+        'Designer Dress', 
+        'Wool Blazer',
+        'Satin Blouse',
+        'Tailored Pants',
+        'Luxury Scarf'
+      ];
+      
+      for (let i = 0; i < 20; i++) {
+        const date = new Date();
+        date.setHours(date.getHours() - Math.floor(Math.random() * 72));
+        
+        orders.push({
+          id: `MAMAG-${1000 + i}`,
+          product: products[Math.floor(Math.random() * products.length)],
+          customer: `Client ${i + 1}`,
+          amount: Math.floor(Math.random() * 800) + 200,
+          status: Math.random() > 0.6 ? 'received' : 'pending',
+          date: date.toISOString(),
+          size: ['XS', 'S', 'M', 'L', 'XL'][Math.floor(Math.random() * 5)]
+        });
+      }
+      
+      return orders.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    function render() {
+      const app = document.getElementById('app');
+      const config = window.elementSdk?.config || defaultConfig;
+      
+      app.innerHTML = `
+        <div class="h-full w-full flex flex-col">
+          ${renderHeader(config)}
+          <main class="flex-1 overflow-y-auto p-1 md:p-6 lg:p-10">
+            <div id="page-content" class="max-w-7xl mx-auto">
+              ${renderPage(config)}
+            </div>
+          </main>
+        </div>
+        ${state.showModal ? renderProductModal(config) : ''}
+        ${state.editingProduct !== null ? renderEditModal(config) : ''}
+      `;
+
+      attachEventListeners();
+    }
+
+    function renderHeader(config) {
+      return `
+        <header class="luxury-card rounded-none border-x-0 border-t-0 px-4 md:px-10 py-4 md:py-8 relative z-10">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div class="space-y-2">
+              <div class="flex items-center gap-4">
+                <div>
+                  <h1 class="font-mamag text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight" 
+                      style="color: ${config.text_color};">
+                    ${config.brand_name}
+                  </h1>
+                  <p class="text-sm md:text-base opacity-60 tracking-wide" style="color: ${config.text_color};">
+                    ${config.dashboard_title}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-3">
+              ${renderNavTabs(config)}
+            </div>
+          </div>
+        </header>
+      `;
+    }
+
+    function renderNavTabs(config) {
+      const tabs = [
+        { id: 'overview', label: config.overview_label, icon: icons.chart },
+        { id: 'products', label: config.products_label, icon: icons.shopping },
+        { id: 'orders', label: config.orders_label, icon: icons.package }
+      ];
+
+      return tabs.map(tab => `
+        <button 
+          onclick="switchPage('${tab.id}')"
+          class="luxury-tab ${state.currentPage === tab.id ? 'luxury-tab-active' : ''} px-3 md:px-8 py-3 md:py-4 rounded-xl text-[12px] md:text-base flex items-center gap-2 md:gap-3"
+          style="${state.currentPage !== tab.id ? `color: ${config.text_color};` : ''}">
+          ${tab.icon}
+          <span>${tab.label}</span>
+        </button>
+      `).join('');
+    }
+
+    function renderPage(config) {
+      switch(state.currentPage) {
+        case 'overview': return renderOverview(config);
+        case 'products': return renderProducts(config);
+        case 'orders': return renderOrders(config);
+        default: return renderOverview(config);
+      }
+    }
+
+    function renderOverview(config) {
+      const totalRevenue = state.analytics.data.reduce((sum, d) => sum + d.revenue, 0);
+      const totalOrders = state.analytics.data.reduce((sum, d) => sum + d.orders, 0);
+      const todayOrders = state.analytics.data[state.analytics.data.length - 1]?.orders || 0;
+      const newOrders = state.orders.filter(o => o.status === 'pending').length;
+
+      return `
+        <div class="space-y-8 md:space-y-10">
+          <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 p-[10px]">
+            ${renderKPICard('Total Revenue', `₦${totalRevenue.toLocaleString()}`, icons.money, config, 1, '#4CAF50')}
+            ${renderKPICard('Today\'s Income', `₦${state.analytics.data[state.analytics.data.length - 1]?.revenue || 0}`, icons.trending, config, 2, '#2196F3')}
+            ${renderKPICard('Orders Today', todayOrders.toString(), icons.package, config, 3, '#FF9800')}
+            ${renderKPICard('New Orders', newOrders.toString(), icons.notification, config, 4, '#E91E63')}
+          </div>
+
+          <div class="luxury-card rounded-3xl p-6 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+              <div>
+                <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-2" 
+                    style="color: ${config.text_color};">
+                  Analytics Dashboard
+                </h2>
+                <p class="text-sm md:text-base opacity-60" style="color: ${config.text_color};">
+                  Track your performance metrics
+                </p>
+              </div>
+              <div class="flex gap-3">
+                ${['week', 'month', 'year'].map(period => `
+                  <button 
+                    onclick="changePeriod('${period}')"
+                    class="${state.analytics.period === period ? 'luxury-btn' : 'luxury-tab'} px-5 md:px-6 py-3 rounded-xl text-sm md:text-base font-semibold"
+                    style="${state.analytics.period !== period ? `color: ${config.text_color};` : ''}">
+                    ${period.charAt(0).toUpperCase() + period.slice(1)}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+            ${renderBarChart(config)}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderKPICard(title, value, icon, config, index, accentColor) {
+      return `
+        <div class="luxury-card rounded-2xl p-6 md:p-8 stagger-item relative group"
+             style="animation-delay: ${index * 0.1}s;">
+          
+          
+          <div class="relative z-10">
+            <div class="mb-4 opacity-80" style="color: ${accentColor};">${icon}</div>
+            <p class="text-xs md:text-sm font-medium opacity-60 tracking-wider uppercase mb-3" 
+               style="color: ${config.text_color};">
+              ${title}
+            </p>
+            <p class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold" 
+               style="color: ${config.primary_color};">
+              ${value}
+            </p>
+          </div>
+          
+          
+        </div>
+      `;
+    }
+
+    function renderBarChart(config) {
+      const maxValue = Math.max(...state.analytics.data.map(d => d.orders));
+      
+      return `
+        <div class="space-y-5">
+          ${state.analytics.data.map((item, index) => `
+            <div class="flex items-center gap-4 md:gap-6">
+              <span class="text-sm md:text-base font-semibold w-5 md:w-24 text-right" 
+                    style="color: ${config.text_color};">
+                ${item.label}
+              </span>
+              <div class="flex-1 relative">
+                <div class="h-12 md:h-14 bg-gradient-to-r from-gray-100 to-gray-50 rounded-[100px] overflow-hidden">
+                  <div 
+                    class="chart-bar h-full flex items-center justify-between px-4 md:px-6"
+                    style="width: ${(item.orders / maxValue) * 100}%; animation-delay: ${index * 0.1}s;">
+                    <span class="text-white text-sm md:text-base font-bold">${item.orders} orders</span>
+                    <span class="text-white text-xs md:text-sm font-medium opacity-90">₦${item.revenue.toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderProducts(config) {
+      return `
+        <div class="space-y-8">
+          ${state.uploadStep < 4 ? `
+            <div class="luxury-card rounded-3xl p-6 md:p-10">
+              <div class="flex items-center justify-between mb-8">
+                <div>
+                  <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-2" 
+                      style="color: ${config.text_color};">
+                    Product Management
+                  </h2>
+                  <p class="text-sm md:text-base opacity-60" style="color: ${config.text_color};">
+                    Upload your product 
+                  </p>
+                </div>
+                ${state.uploadStep > 1 ? `
+                  <button onclick="resetUpload()" 
+                          class="luxury-btn px-3 py-3 rounded-xl text-sm font-semibold flex items-center gap-2">
+                    Start Over
+                  </button>
+                ` : ''}
+              </div>
+              
+              ${renderProductUploadSteps(config)}
+            </div>
+          ` : ''}
+          
+          ${state.products.length > 0 ? `
+            <div class="luxury-card rounded-3xl p-6 md:p-10">
+              <div class="flex items-center justify-between mb-8">
+                <div>
+                  <h3 class="font-serif text-xl md:text-2xl font-bold mb-2" style="color: ${config.text_color};">
+                    Product Gallery
+                  </h3>
+                  <p class="text-sm opacity-60" style="color: ${config.text_color};">
+                    ${state.products.filter(p => p.active !== false).length} active products, ${state.products.filter(p => p.active === false).length} inactive
+                  </p>
+                </div>
+                <button onclick="resetUpload()" 
+                        class="luxury-btn px-3 py-3 rounded-xl text-sm font-semibold flex items-center gap-2">
+                  Add Product
+                </button>
+              </div>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                ${state.products.map((product, i) => renderProductCard(product, i, config)).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function renderProductCard(product, index, config) {
+      const imageUrl = product.imageUrls && product.imageUrls[0] ? product.imageUrls[0] : null;
+      const isInactive = product.active === false;
+      
+      return `
+        <div class="product-card rounded-3xl overflow-hidden stagger-item ${isInactive ? 'product-inactive' : ''}"
+             style="animation-delay: ${index * 0.1}s;">
+          ${isInactive ? '<div class="inactive-overlay">INACTIVE</div>' : ''}
+          
+          <div class="product-image flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, ${config.secondary_color}, ${config.background_color});">
+            ${imageUrl ? `
+              <img src="${imageUrl}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='${icons.image}>
+            ` : `
+              <div class="text-6xl opacity-30">${icons.image}</div>
+            `}
+          </div>
+          
+          <div class="p-6">
+            <h4 class="font-serif text-xl md:text-2xl font-bold mb-3 truncate" style="color: ${config.text_color};">
+              ${product.name}
+            </h4>
+            <p class="text-3xl font-bold mb-4" style="color: ${config.primary_color};">
+              ₦${product.price}
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              ${product.sizes.slice(0, 5).map(size => `
+                <span class="px-3 py-1.5 rounded-lg text-xs font-semibold"
+                      style="background: ${config.primary_color}20; color: ${config.primary_color};">
+                  ${size}
+                </span>
+              `).join('')}
+              ${product.sizes.length > 5 ? `
+                <span class="px-3 py-1.5 rounded-lg text-xs font-semibold"
+                      style="background: ${config.accent_color}20; color: ${config.accent_color};">
+                  +${product.sizes.length - 5}
+                </span>
+              ` : ''}
+            </div>
+            
+            <div class="flex gap-2">
+              <button onclick="showProductDetails(${index})" 
+                      class="flex-1 luxury-tab px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2"
+                      style="color: ${config.text_color};">
+                ${icons.eye} View
+              </button>
+              <button onclick="editProduct(${index})" 
+                      class="flex-1 luxury-tab px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2"
+                      style="color: ${config.text_color};">
+                ${icons.edit} Edit
+              </button>
+              <button onclick="toggleProductActive(${index})" 
+                      class="luxury-tab px-4 py-2.5 rounded-xl text-sm font-semibold"
+                      style="color: ${config.text_color};">
+                ${icons.toggle}
+              </button>
+              <button onclick="deleteProduct(${index})" 
+                      class="luxury-tab px-4 py-2.5 rounded-xl text-sm font-semibold"
+                      style="color: #dc2626;">
+                ${icons.delete}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProductUploadSteps(config) {
+      const steps = [
+        { num: 1, title: 'Destination', icon: icons.location },
+        { num: 2, title: 'Upload Media', icon: icons.image },
+        { num: 3, title: 'Product Info', icon: icons.edit },
+        { num: 4, title: 'Preview', icon: icons.eye }
+      ];
+      
+      return `
+        <div class="mb-10">
+          <div class="flex items-center justify-between relative">
+            <div class="absolute top-6 left-0 right-0 h-1 bg-gradient-to-r from-gray-200 to-gray-100 rounded-full"></div>
+            <div class="absolute top-6 left-0 h-1 rounded-full transition-all duration-500"
+                 style="width: ${((state.uploadStep - 1) / 3) * 100}%; background: linear-gradient(90deg, ${config.primary_color}, ${config.accent_color});"></div>
+            
+            ${steps.map(step => `
+              <div class="relative z-10 flex flex-col items-center">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center font-bold transition-all duration-500 ${state.uploadStep >= step.num ? 'luxury-btn' : 'bg-white border-2'}"
+                     style="${state.uploadStep < step.num ? `border-color: ${config.primary_color}40; color: ${config.text_color};` : ''}">
+                  ${state.uploadStep > step.num ? icons.check : step.icon}
+                </div>
+                <span class="text-xs md:text-sm font-medium mt-2 text-center" style="color: ${config.text_color};">
+                  ${step.title}
+                </span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        ${state.uploadStep === 1 ? renderUploadStep1(config) : ''}
+        ${state.uploadStep === 2 ? renderUploadStep2(config) : ''}
+        ${state.uploadStep === 3 ? renderUploadStep3(config) : ''}
+      `;
+    }
+
+    function renderUploadStep1(config) {
+      const destinations = [
+        { 
+          id: 'latest', 
+          title: 'Latest Updates', 
+          icon: icons.sparkle, 
+          desc: 'Trending items and new releases',
+          color: '#E91E63'
+        },
+        { 
+          id: 'new', 
+          title: 'New Arrivals', 
+          icon: icons.newItem, 
+          desc: 'Fresh collection additions',
+          color: '#2196F3'
+        },
+        { 
+          id: 'stock', 
+          title: 'In Stock', 
+          icon: icons.stock, 
+          desc: 'Available inventory items',
+          color: '#4CAF50'
+        }
+      ];
+
+      return `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          ${destinations.map(dest => `
+            <button 
+              onclick="selectDestination('${dest.id}')"
+              class="luxury-card rounded-2xl p-8 text-left group hover:scale-105 transition-all duration-500">
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                   style="background: linear-gradient(135deg, ${dest.color}20, ${dest.color}10); color: ${dest.color};">
+                ${dest.icon}
+              </div>
+              <h4 class="font-serif text-xl md:text-2xl font-bold mb-3" style="color: ${config.text_color};">
+                ${dest.title}
+              </h4>
+              <p class="text-sm md:text-base opacity-60 leading-relaxed" style="color: ${config.text_color};">
+                ${dest.desc}
+              </p>
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderUploadStep2(config) {
+      return `
+        <div class="space-y-8">
+          <div class="upload-zone rounded-3xl p-12 md:p-20 text-center cursor-pointer"
+               onclick="document.getElementById('fileInput').click();">
+            <div class="mb-6 opacity-40" style="color: ${config.primary_color};">${icons.image}</div>
+            <h3 class="font-serif text-2xl md:text-3xl font-bold mb-4" style="color: ${config.text_color};">
+              Upload Your Media
+            </h3>
+            <p class="text-base md:text-lg opacity-60 mb-2" style="color: ${config.text_color};">
+              Click or drag files here
+            </p>
+            <p class="text-sm opacity-50" style="color: ${config.text_color};">
+              ${state.uploadDestination === 'latest' ? 'Images and videos supported' : 'Images only'}
+            </p>
+          </div>
+          <input type="file" id="fileInput" multiple accept="${state.uploadDestination === 'latest' ? 'image/*,video/*' : 'image/*'}" onchange="handleFileUpload(event)">
+          
+          ${state.uploadFiles.length > 0 ? `
+            <div class="space-y-4">
+              ${state.uploadFiles.map((file, i) => `
+                <div class="luxury-card rounded-2xl p-5 stagger-item">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+                         style="background: linear-gradient(135deg, ${config.primary_color}20, ${config.accent_color}20); color: ${config.primary_color};">
+                      ${icons.image}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="font-semibold text-sm md:text-base truncate" style="color: ${config.text_color};">
+                        ${file.name}
+                      </p>
+                      <p class="text-xs opacity-60" style="color: ${config.text_color};">
+                        ${file.progress}% uploaded
+                      </p>
+                    </div>
+                    <span style="color: ${file.progress === 100 ? '#4CAF50' : config.primary_color};">${file.progress === 100 ? icons.check : icons.image}</span>
+                  </div>
+                  <div class="progress-container h-3 rounded-full">
+                    <div class="progress-bar h-full rounded-full" style="width: ${file.progress}%;"></div>
+                  </div>
+                </div>
+              `).join('')}
+              ${state.uploadFiles.every(f => f.progress === 100) ? `
+                <button onclick="state.uploadStep = 3; render();" 
+                        class="w-full luxury-btn rounded-2xl py-5 text-lg  flex items-center justify-center gap-2">
+                  Continue to Product Details ${icons.sparkle}
+                </button>
+              ` : ''}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function renderUploadStep3(config) {
+      const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '4', '5', '6', '7', '8', '9', '10', '11'];
+      
+      return `
+        <div class="space-y-8">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm md:text-base font-semibold mb-3" style="color: ${config.text_color};">
+                Product Name
+              </label>
+              <input 
+                type="text" 
+                id="productName"
+                value="${state.productInfo.name}"
+                placeholder="e.g., Silk Evening Gown"
+                class="luxury-input w-full px-6 py-4 rounded-2xl text-base"
+                style="color: ${config.text_color};"
+                onchange="state.productInfo.name = this.value;">
+            </div>
+            
+            <div>
+              <label class="block text-sm md:text-base font-semibold mb-3" style="color: ${config.text_color};">
+                Price (NGN)
+              </label>
+              <div class="relative">
+                <span class="absolute left-6 top-1/2 -translate-y-1/2 text-xl font-bold" style="color: ${config.primary_color};">₦</span>
+                <input 
+                  type="number" 
+                  id="productPrice"
+                  value="${state.productInfo.price}"
+                  placeholder="299"
+                  class="luxury-input w-full pl-12 pr-6 py-4 rounded-2xl text-base"
+                  style="color: ${config.text_color};"
+                  onchange="state.productInfo.price = this.value;">
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm md:text-base font-semibold mb-4" style="color: ${config.text_color};">
+              Available Sizes
+            </label>
+            <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 gap-3">
+              ${sizes.map(size => `
+                <button 
+                  onclick="toggleSize('${size}')"
+                  class="size-btn ${state.productInfo.sizes.includes(size) ? 'size-btn-active' : ''} py-4 rounded-xl font-bold text-base"
+                  style="${!state.productInfo.sizes.includes(size) ? `color: ${config.text_color};` : ''}">
+                  ${size}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+          
+          <button onclick="createProduct()" 
+                  class="w-full luxury-btn rounded-2xl py-5 text-lg mt-8 flex items-center justify-center gap-2">
+            Create Product ${icons.sparkle}
+          </button>
+        </div>
+      `;
+    }
+
+    function renderProductModal(config) {
+      const product = state.selectedProduct;
+      if (!product) return '';
+      
+      return `
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md"
+             style="background: rgba(26, 26, 26, 0.7);"
+             onclick="closeModal(event)">
+          <div class="modal-content luxury-card rounded-3xl max-w-3xl w-full max-h-[90%] overflow-y-auto p-6 md:p-10"
+               onclick="event.stopPropagation();">
+            <div class="flex items-start justify-between mb-8">
+              <div>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold mb-2" style="color: ${config.text_color};">
+                  Product Details
+                </h3>
+                <p class="text-sm opacity-60" style="color: ${config.text_color};">
+                  Complete product information
+                </p>
+              </div>
+              <button onclick="state.showModal = false; render();" 
+                      class="w-12 h-12 rounded-[100px] flex items-center justify-center bg-gray-300 transition-colors"
+                      style="color: ${config.text_color};">
+                ${icons.close}
+              </button>
+            </div>
+            
+            <div class="space-y-8">
+              <div class="grid ${product.imageUrls && product.imageUrls.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-4">
+                ${product.imageUrls && product.imageUrls.length > 0 ? product.imageUrls.map((url, i) => `
+                  <div class="aspect-square rounded-2xl overflow-hidden flex items-center justify-center"
+                       style="background: linear-gradient(135deg, ${config.secondary_color}, ${config.background_color});">
+                    <img src="${url}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'text-5xl opacity-30\\'>${icons.image}</div>';">
+                  </div>
+                `).join('') : `
+                  <div class="aspect-square rounded-2xl flex items-center justify-center text-5xl opacity-20"
+                       style="background: linear-gradient(135deg, ${config.secondary_color}, ${config.background_color}); color: ${config.primary_color};">
+                    ${icons.image}
+                  </div>
+                `}
+              </div>
+              
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-serif text-2xl md:text-3xl font-bold mb-2" style="color: ${config.text_color};">
+                    ${product.name}
+                  </h4>
+                  <p class="text-4xl font-bold" style="color: ${config.primary_color};">
+                    $${product.price}
+                  </p>
+                </div>
+                
+                <div class="luxury-card rounded-2xl p-6">
+                  <p class="text-sm font-semibold mb-4 opacity-60" style="color: ${config.text_color};">
+                    Available Sizes
+                  </p>
+                  <div class="flex flex-wrap gap-3">
+                    ${product.sizes.map(size => `
+                      <span class="px-4 py-2 rounded-xl text-sm font-bold"
+                            style="background: ${config.primary_color}20; color: ${config.primary_color};">
+                        ${size}
+                      </span>
+                    `).join('')}
+                  </div>
+                </div>
+                
+                <div class="luxury-card rounded-2xl p-6">
+                  <p class="text-sm font-semibold mb-3 opacity-60" style="color: ${config.text_color};">
+                    Category
+                  </p>
+                  <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold"
+                        style="background: linear-gradient(135deg, ${config.primary_color}, ${config.accent_color}); color: white;">
+                    ${product.destination === 'latest' ? icons.sparkle : product.destination === 'new' ? icons.newItem : icons.stock}
+                    <span>${product.destination === 'latest' ? 'Latest Updates' : product.destination === 'new' ? 'New Arrivals' : 'In Stock'}</span>
+                  </span>
+                </div>
+
+                <div class="luxury-card rounded-2xl p-6">
+                  <p class="text-sm font-semibold mb-3 opacity-60" style="color: ${config.text_color};">
+                    Status
+                  </p>
+                  <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold ${product.active === false ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}">
+                    ${product.active === false ? icons.close : icons.check}
+                    <span>${product.active === false ? 'Inactive' : 'Active'}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderEditModal(config) {
+      const product = state.products[state.editingProduct];
+      if (!product) return '';
+      
+      const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '4', '5', '6', '7', '8', '9', '10', '11'];
+      
+      return `
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md"
+             style="background: rgba(26, 26, 26, 0.7);"
+             onclick="closeEditModal(event)">
+          <div class="modal-content luxury-card rounded-3xl max-w-3xl w-full max-h-[90%] overflow-y-auto p-6 md:p-10"
+               onclick="event.stopPropagation();">
+            <div class="flex items-start justify-between mb-8">
+              <div>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold mb-2" style="color: ${config.text_color};">
+                  Edit Product
+                </h3>
+                <p class="text-sm opacity-60" style="color: ${config.text_color};">
+                  Update product information
+                </p>
+              </div>
+              <button onclick="state.editingProduct = null; render();" 
+                      class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-gray-100 transition-colors"
+                      style="color: ${config.text_color};">
+                ${icons.close}
+              </button>
+            </div>
+            
+            <div class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm md:text-base font-semibold mb-3" style="color: ${config.text_color};">
+                    Product Name
+                  </label>
+                  <input 
+                    type="text" 
+                    id="editProductName"
+                    value="${product.name}"
+                    class="luxury-input w-full px-6 py-4 rounded-2xl text-base"
+                    style="color: ${config.text_color};">
+                </div>
+                
+                <div>
+                  <label class="block text-sm md:text-base font-semibold mb-3" style="color: ${config.text_color};">
+                    Price (NGN)
+                  </label>
+                  <div class="relative">
+                    <span class="absolute left-6 top-1/2 -translate-y-1/2 text-xl font-bold" style="color: ${config.primary_color};">$</span>
+                    <input 
+                      type="number" 
+                      id="editProductPrice"
+                      value="${product.price}"
+                      class="luxury-input w-full pl-12 pr-6 py-4 rounded-2xl text-base"
+                      style="color: ${config.text_color};">
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-sm md:text-base font-semibold mb-4" style="color: ${config.text_color};">
+                  Available Sizes
+                </label>
+                <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 gap-3" id="editSizeContainer">
+                  ${sizes.map(size => `
+                    <button 
+                      onclick="toggleEditSize('${size}')"
+                      class="size-btn ${product.sizes.includes(size) ? 'size-btn-active' : ''} py-4 rounded-xl font-bold text-base"
+                      data-size="${size}"
+                      style="${!product.sizes.includes(size) ? `color: ${config.text_color};` : ''}">
+                      ${size}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <button onclick="saveProductEdit()" 
+                        class="flex-1 luxury-btn rounded-2xl py-4 text-base font-bold flex items-center justify-center gap-2">
+                  ${icons.check} Save Changes
+                </button>
+                <button onclick="state.editingProduct = null; render();" 
+                        class="luxury-tab px-8 py-4 rounded-2xl text-base font-semibold"
+                        style="color: ${config.text_color};">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderOrders(config) {
+      const filteredOrders = filterOrders(state.orderFilter);
+      const chartData = generateOrderChart(state.orderFilter);
+      const pendingOrders = filteredOrders.filter(o => o.status === 'pending');
+      
+      return `
+        <div class="space-y-8">
+          <div class="luxury-card rounded-3xl p-6 md:p-10">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-2" 
+                    style="color: ${config.text_color};">
+                  Live Order Feed
+                </h2>
+                <p class="text-sm md:text-base opacity-60" style="color: ${config.text_color};">
+                  ${pendingOrders.length} pending orders
+                </p>
+              </div>
+              <div class="pulse-badge w-4 h-4 rounded-full" style="background: #E91E63;"></div>
+            </div>
+            
+            <div class="space-y-4">
+              ${pendingOrders.slice(0, 5).map((order, i) => `
+                <div class="order-item luxury-card rounded-2xl p-5 md:p-6 stagger-item"
+                     style="animation-delay: ${i * 0.1}s;">
+                  <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                         style="background: linear-gradient(135deg, ${config.primary_color}20, ${config.accent_color}20); color: ${config.primary_color};">
+                      ${icons.package}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="font-bold text-base md:text-lg mb-1" style="color: ${config.text_color};">
+                        ${order.product}
+                      </h4>
+                      <p class="text-sm opacity-60" style="color: ${config.text_color};">
+                        ${order.customer} • Size ${order.size} • ${order.id}
+                      </p>
+                    </div>
+                    <div class="flex justify-between items-center gap-4">
+                      <span class="font-serif text-2xl md:text-3xl font-bold" style="color: ${config.primary_color};">
+                        ₦${order.amount}
+                      </span>
+                      <button 
+                        onclick="markAsReceived('${order.id}')"
+                        class="luxury-btn px-5 md:px-6 py-3 rounded-xl text-sm whitespace-nowrap flex  items-center gap-2">
+                         Receive ?
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="luxury-card rounded-3xl p-6 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+              <div>
+                <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-2" 
+                    style="color: ${config.text_color};">
+                  Order History
+                </h2>
+                <p class="text-sm md:text-base opacity-60" style="color: ${config.text_color};">
+                  ${filteredOrders.length} total orders
+                </p>
+              </div>
+              <div class="flex gap-3">
+                ${['day', 'week', 'month'].map(filter => `
+                  <button 
+                    onclick="changeOrderFilter('${filter}')"
+                    class="${state.orderFilter === filter ? 'luxury-btn' : 'luxury-tab'} px-5 md:px-6 py-3 rounded-xl text-sm font-semibold"
+                    style="${state.orderFilter !== filter ? `color: ${config.text_color};` : ''}">
+                    ${filter.charAt(0).toUpperCase() + filter.slice(1)}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+            
+            <div class="mb-10">
+              ${renderOrderChart(chartData, config)}
+            </div>
+            
+            <div class="overflow-x-auto">
+              <table class="luxury-table w-full rounded-2xl overflow-hidden">
+                <thead>
+                  <tr>
+                    <th class="text-left py-5 px-6 text-sm font-bold" style="color: ${config.text_color};">ORDER ID</th>
+                    <th class="text-left py-5 px-6 text-sm font-bold" style="color: ${config.text_color};">PRODUCT</th>
+                    <th class="text-left py-5 px-6 text-sm font-bold hidden md:table-cell" style="color: ${config.text_color};">CUSTOMER</th>
+                    <th class="text-right py-5 px-6 text-sm font-bold" style="color: ${config.text_color};">AMOUNT</th>
+                    <th class="text-center py-5 px-6 text-sm font-bold" style="color: ${config.text_color};">STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${filteredOrders.map(order => `
+                    <tr>
+                      <td class="py-5 px-6 text-sm font-semibold" style="color: ${config.text_color};">${order.id}</td>
+                      <td class="py-5 px-6 text-sm" style="color: ${config.text_color};">${order.product}</td>
+                      <td class="py-5 px-6 text-sm hidden md:table-cell" style="color: ${config.text_color};">${order.customer}</td>
+                      <td class="py-5 px-6 text-base font-bold text-right" style="color: ${config.primary_color};">₦${order.amount}</td>
+                      <td class="py-5 px-6 text-center">
+                        <span class="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs font-bold ${order.status === 'received' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}">
+                          ${order.status === 'received' ? icons.check : icons.notification}
+                          <span>${order.status === 'received' ? 'Received' : 'Pending'}</span>
+                        </span>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderOrderChart(data, config) {
+      const maxValue = Math.max(...data.map(d => d.value));
+      
+      return `
+        <div class="space-y-5">
+          ${data.map((item, index) => `
+            <div class="flex items-center gap-5">
+              <span class="text-sm font-bold w-24 text-right" style="color: ${config.text_color};">
+                ${item.label}
+              </span>
+              <div class="flex-1">
+                <div class="h-14 bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl overflow-hidden">
+                  <div 
+                    class="chart-bar h-full flex items-center justify-between px-6"
+                    style="width: ${(item.value / maxValue) * 100}%; animation-delay: ${index * 0.1}s;">
+                    <span class="text-white text-base font-bold">${item.value}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Event Handlers
+    function switchPage(page) {
+      state.currentPage = page;
+      render();
+    }
+
+    function changePeriod(period) {
+      state.analytics.period = period;
+      state.analytics.data = generateAnalyticsData(period);
+      render();
+    }
+
+    function selectDestination(dest) {
+      state.uploadDestination = dest;
+      state.uploadStep = 2;
+      render();
+    }
+
+    function handleFileUpload(event) {
+      const files = Array.from(event.target.files);
+      state.uploadFiles = files.map(f => ({
+        name: f.name,
+        progress: 0,
+        file: f
+      }));
+      
+      render();
+      
+      // Create URLs for uploaded images
+      const imageUrls = [];
+      files.forEach((file, i) => {
+        if (file.type.startsWith('image/')) {
+          imageUrls.push(URL.createObjectURL(file));
+        }
+      });
+      state.uploadFiles.forEach(f => f.imageUrls = imageUrls);
+      
+      // Smooth progress animation
+      state.uploadFiles.forEach((file, i) => {
+        const interval = setInterval(() => {
+          if (file.progress < 100) {
+            file.progress += 5;
+            // Update only the progress element without full re-render
+            const progressBar = document.querySelectorAll('.progress-bar')[i];
+            if (progressBar) {
+              progressBar.style.width = file.progress + '%';
+            }
+            const progressText = document.querySelectorAll('.luxury-card .text-xs')[i];
+            if (progressText) {
+              progressText.textContent = file.progress + '% uploaded';
+            }
+          } else {
+            clearInterval(interval);
+            if (state.uploadFiles.every(f => f.progress === 100)) {
+              render();
+            }
+          }
+        }, 50);
+      });
+    }
+
+    function toggleSize(size) {
+      const index = state.productInfo.sizes.indexOf(size);
+      if (index > -1) {
+        state.productInfo.sizes.splice(index, 1);
+      } else {
+        state.productInfo.sizes.push(size);
+      }
+      render();
+    }
+
+    function createProduct() {
+      if (!state.productInfo.name || !state.productInfo.price || state.productInfo.sizes.length === 0) {
+        showToast('Please fill in all product information');
+        return;
+      }
+      
+      const imageUrls = [];
+      state.uploadFiles.forEach(file => {
+        if (file.file.type.startsWith('image/')) {
+          imageUrls.push(URL.createObjectURL(file.file));
+        }
+      });
+      
+      state.products.push({
+        name: state.productInfo.name,
+        price: state.productInfo.price,
+        sizes: [...state.productInfo.sizes],
+        files: state.uploadFiles,
+        imageUrls: imageUrls,
+        destination: state.uploadDestination,
+        active: true
+      });
+      
+      state.uploadStep = 4;
+      showToast('Product created successfully!');
+      render();
+    }
+
+    function resetUpload() {
+      state.uploadStep = 1;
+      state.uploadDestination = '';
+      state.uploadFiles = [];
+      state.productInfo = { name: '', price: '', sizes: [] };
+      render();
+    }
+
+    function showProductDetails(index) {
+      state.selectedProduct = state.products[index];
+      state.showModal = true;
+      render();
+    }
+
+    function closeModal(event) {
+      if (event.target === event.currentTarget) {
+        state.showModal = false;
+        render();
+      }
+    }
+
+    function editProduct(index) {
+      state.editingProduct = index;
+      render();
+    }
+
+    function closeEditModal(event) {
+      if (event.target === event.currentTarget) {
+        state.editingProduct = null;
+        render();
+      }
+    }
+
+    function toggleEditSize(size) {
+      const product = state.products[state.editingProduct];
+      const index = product.sizes.indexOf(size);
+      if (index > -1) {
+        product.sizes.splice(index, 1);
+      } else {
+        product.sizes.push(size);
+      }
+      render();
+    }
+
+    function saveProductEdit() {
+      const product = state.products[state.editingProduct];
+      const newName = document.getElementById('editProductName').value;
+      const newPrice = document.getElementById('editProductPrice').value;
+      
+      if (!newName || !newPrice || product.sizes.length === 0) {
+        showToast('Please fill in all product information');
+        return;
+      }
+      
+      product.name = newName;
+      product.price = newPrice;
+      
+      state.editingProduct = null;
+      showToast('Product updated successfully!');
+      render();
+    }
+
+    function toggleProductActive(index) {
+      state.products[index].active = !state.products[index].active;
+      const status = state.products[index].active ? 'activated' : 'deactivated';
+      showToast(`Product ${status} successfully!`);
+      render();
+    }
+
+    function deleteProduct(index) {
+      const productName = state.products[index].name;
+      state.products.splice(index, 1);
+      showToast(`${productName} deleted successfully!`);
+      render();
+    }
+
+    function markAsReceived(orderId) {
+      const order = state.orders.find(o => o.id === orderId);
+      if (order) {
+        order.status = 'received';
+        showToast('Order marked as received!');
+        render();
+      }
+    }
+
+    function changeOrderFilter(filter) {
+      state.orderFilter = filter;
+      render();
+    }
+
+    function filterOrders(filter) {
+      const now = new Date();
+      return state.orders.filter(order => {
+        const orderDate = new Date(order.date);
+        const diffHours = (now - orderDate) / (1000 * 60 * 60);
+        
+        switch(filter) {
+          case 'day': return diffHours <= 24;
+          case 'week': return diffHours <= 168;
+          case 'month': return diffHours <= 720;
+          default: return true;
+        }
+      });
+    }
+
+    function generateOrderChart(filter) {
+      const labels = filter === 'day' 
+        ? ['12AM', '4AM', '8AM', '12PM', '4PM', '8PM']
+        : filter === 'week'
+        ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        : ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+      
+      return labels.map(label => ({
+        label,
+        value: Math.floor(Math.random() * 50) + 10
+      }));
+    }
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'toast fixed bottom-6 right-6 rounded-2xl px-8 py-4 text-sm z-50 shadow-2xl';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    function attachEventListeners() {
+      // Events handled via onclick attributes
+    }
+
+    // Element SDK
+    async function onConfigChange(config) {
+      document.documentElement.style.setProperty('--color-primary', config.primary_color || defaultConfig.primary_color);
+      document.documentElement.style.setProperty('--color-secondary', config.secondary_color || defaultConfig.secondary_color);
+      document.documentElement.style.setProperty('--color-accent', config.accent_color || defaultConfig.accent_color);
+      document.documentElement.style.setProperty('--color-dark', config.text_color || defaultConfig.text_color);
+      document.documentElement.style.setProperty('--color-light', config.background_color || defaultConfig.background_color);
+      render();
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["brand_name", config.brand_name || defaultConfig.brand_name],
+        ["dashboard_title", config.dashboard_title || defaultConfig.dashboard_title],
+        ["overview_label", config.overview_label || defaultConfig.overview_label],
+        ["products_label", config.products_label || defaultConfig.products_label],
+        ["orders_label", config.orders_label || defaultConfig.orders_label]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    render();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b9fecdc47bc35ca',t:'MTc2Nzc1MTg5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
